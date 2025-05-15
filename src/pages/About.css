@@ -1,0 +1,36 @@
+.aboutus_container {
+  margin-top: 15vh;
+  margin-bottom: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutus {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  align-items: center;
+  justify-content: center;
+  font-family: "Barlow";
+  width: 85%;
+  padding: 6em 5em;
+  color: #ffffff;
+  background-color: #70008c;
+  border-radius: 1em;
+  box-shadow: 0 0 8px #111111b0;
+}
+
+.aboutus > h2 {
+  font-size: 2rem;
+}
+
+.aboutus > p {
+  text-align: center;
+  color: #ffffffcc;
+  line-height: 1.4;
+}
+
+.aboutus > p b {
+  color: #ffffff;
+}

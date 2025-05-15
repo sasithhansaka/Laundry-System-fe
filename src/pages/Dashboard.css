@@ -1,0 +1,59 @@
+.dashboard {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 640px) {
+    .dashboard {
+        margin-left: 255px;
+    }
+}
+
+.dashboard-header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.searchbar{
+    width: 70%;
+
+    background-color: #8B38B5;
+    border: 1px solid #ccc;
+
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.dashboard-header input {
+    width: 70%;
+    background-color: transparent;
+    padding-left:20px;
+    font-family: "Poppins";
+    border-style: hidden;
+}
+
+.profile-picture-div {
+    display: flex;
+    position: absolute;
+    right: 0;
+}
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    border-radius: 50%;
+    justify-content: right;
+}
+.dashboard-divider {
+    border: none;
+    height: 2px; /* Adjust the thickness if necessary */
+    background-color: #8B38B5; /* Set the line color to purple */
+    width: 100%; /* Ensure the line spans the width of the container */
+}
+
