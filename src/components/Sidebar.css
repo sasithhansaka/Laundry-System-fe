@@ -2,7 +2,7 @@
     height: 100vh;
     position: fixed;
     width: 337px;
-    background-color: #8B38B5;
+    background-color: #0e0214;
     color: white;
     display: flex;
     flex-direction: column;
@@ -29,10 +29,14 @@
 
 .custom-divider {
     border: none;
-    height: 2px; /* Adjust the thickness if necessary */
-    background-color: white; /* Set to white to match the image */
-    margin: 20px 0; /* Space between the text and the line */
-    width: 100%; /* Ensure the line spans the width of the container */
+    height: 2px;
+    /* Adjust the thickness if necessary */
+    background-color: white;
+    /* Set to white to match the image */
+    margin: 20px 0;
+    /* Space between the text and the line */
+    width: 100%;
+    /* Ensure the line spans the width of the container */
 }
 
 
@@ -41,6 +45,7 @@
     padding: 0;
     margin: 20px 0;
 }
+
 .menu p {
     margin-bottom: 10px;
     font-weight: 500;
@@ -57,7 +62,7 @@
 
 .menu li>svg {
     position: absolute;
-    right:25px;
+    right: 25px;
 }
 
 .menu li span {
@@ -70,44 +75,63 @@
 }
 
 .notification-banner {
-    color: #FFFFFF; /* White text color */
-    padding: 20px; /* Padding inside the banner */
+    color: #FFFFFF;
+    /* White text color */
+    padding: 20px;
+    /* Padding inside the banner */
     margin: 20px auto;
     width: 254px;
     height: 237px;
-    border-radius: 20px;border: 1px;
-    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    border: 1px;
+    background: rgba(215, 20, 20, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.5)
 }
 
 .beta-tag {
     background-color: #ffffff;
     color: #FFD700;
-    padding: 5px 15px; /* Padding for the tag */
-    border-radius: 20px; /* Rounded corners */
-    display: inline-block; /* Make it inline-block to control spacing */
-    font-weight: bold; /* Make the text bold */
-    margin-bottom: 10px; /* Space below the tag */
+    padding: 5px 15px;
+    /* Padding for the tag */
+    border-radius: 20px;
+    /* Rounded corners */
+    display: inline-block;
+    /* Make it inline-block to control spacing */
+    font-weight: bold;
+    /* Make the text bold */
+    margin-bottom: 10px;
+    /* Space below the tag */
 }
 
 .notification-banner p {
-    color: rgba(255, 255, 255, 0.75); /* Lighten text color slightly */
-    margin-bottom: 20px; /* Space below the paragraph */
-    font-size: 14px; /* Adjust font size */
-    line-height: 1.6; /* Adjust line height */
+    color: rgba(255, 255, 255, 0.75);
+    /* Lighten text color slightly */
+    margin-bottom: 20px;
+    /* Space below the paragraph */
+    font-size: 14px;
+    /* Adjust font size */
+    line-height: 1.6;
+    /* Adjust line height */
 }
 
 .notification-banner a {
-    color: #FFFFFF; /* White text color for the link */
-    text-decoration: underline; /* Underline the link */
-    cursor: pointer; /* Cursor changes to pointer on hover */
+    color: #FFFFFF;
+    /* White text color for the link */
+    text-decoration: underline;
+    /* Underline the link */
+    cursor: pointer;
+    /* Cursor changes to pointer on hover */
 }
 
 .logout {
-    margin-top: 20px; /* Space above the logout button */
-    width: 90%; /* Full width of the container */
-    display: flex; /* Use flexbox for layout */
-    justify-content: center; /* Center the button horizontally */
+    margin-top: 20px;
+    /* Space above the logout button */
+    width: 90%;
+    /* Full width of the container */
+    display: flex;
+    /* Use flexbox for layout */
+    justify-content: center;
+    /* Center the button horizontally */
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -115,17 +139,25 @@
 }
 
 .logout button {
-    display: flex; /* Use flexbox for layout */
+    display: flex;
+    /* Use flexbox for layout */
     justify-content: space-between;
     background-color: rgb(255 255 255 / 0.15);
-    color:rgb(209 213 219);
-    padding: 5px 12px; /* Padding inside the button */
-    border-radius: 50px; /* Fully rounded corners */
-    display: flex; /* Flexbox layout */
-    align-items: center; /* Center items vertically */
-    border: none; /* Remove default border */
-    cursor: pointer; /* Cursor changes to pointer on hover */
-    font-weight: bold; /* Bold text */
+    color: rgb(209 213 219);
+    padding: 5px 12px;
+    /* Padding inside the button */
+    border-radius: 50px;
+    /* Fully rounded corners */
+    display: flex;
+    /* Flexbox layout */
+    align-items: center;
+    /* Center items vertically */
+    border: none;
+    /* Remove default border */
+    cursor: pointer;
+    /* Cursor changes to pointer on hover */
+    font-weight: bold;
+    /* Bold text */
     width: 254px;
 }
 
@@ -135,8 +167,10 @@
 }
 
 .login-image-container img {
-    width: 24px; /* Set width of the image */
-    height: 24px; /* Set height of the image */
+    width: 24px;
+    /* Set width of the image */
+    height: 24px;
+    /* Set height of the image */
 }
 
 @media (max-width: 640px) {

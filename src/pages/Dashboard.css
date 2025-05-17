@@ -22,11 +22,11 @@
 .searchbar{
     width: 70%;
 
-    background-color: #8B38B5;
-    border: 1px solid #ccc;
+
+    border: 2px solid #7720b0;
 
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 50px;
 }
 
 .dashboard-header input {
