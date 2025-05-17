@@ -221,30 +221,51 @@ const userData = [
             isOpen={isUserModalOpen}
             onRequestClose={() => setUserModalOpen(false)}
             contentLabel="User Configuration"
-            className="flex rounded w-full mx-auto mt-20 flex-col justify-center items-center"
+            className="flex rounded w-full h-full justify-center content-end items-center content-center"
         >
             <div className="bg-white border-2 border-purple-500  p-8 w-1/3 rounded-xl">
-                <h2 className="text-xl center font-semibold m-6 text-purple-600">User Configuration</h2>
+            {/* <div className='flex justify-center bg-purple-600 rounded-lg py-3 -mx-6'>
+                <h2 className="text-xl ml-4 center font-semibold text-white">User Configuration</h2>
+            </div> */}
+            <h2 className="text-2xl ml-4 flex justify-center font-semibold text-purple-800">User Configuration</h2>
+            <hr className="custom-divider my-4 w-full flex justify-self-center bg-gray-300" />
             <form action="">
-            <label className="block text-white mb-1">Price Opportunity</label>
+            <label className="block text-gray-500 mb-1">Name</label>
                 <input
                     type="text"
-                    name="milestone"
-                    className="w-full p-2 rounded-md border-none focus:outline-none"
-                    placeholder="Enter price opportunity"
+                    name="name"
+                    className="mb-3 w-full p-2 rounded-md bg-gray-50 border-gray-50 border border-gray-200 p-3 text-gray-900  focus:border-1 focus:border-purple-500"
+                    placeholder="Enter employee name"
                     //value={addPrice.milestone}
                     //onChange={handleAddInputChange}
                     />
-                <label className="block text-white mb-1">Previous Price</label>
+            <label className="block text-gray-500 mb-1">User Role</label>
+                    <select id="countries" className="mb-3 w-full p-2 text-gray-200 rounded-md bg-gray-50 border-gray-50 border border-gray-200 p-3 text-gray-900  focus:border-1 focus:border-purple-500">
+                        <option selected>Select a Role</option>
+                        <option value="US">United States</option>
+                        <option value="CA">Canada</option>
+                        <option value="FR">France</option>
+                        <option value="DE">Germany</option>
+                    </select>
+            <label className="block text-gray-500 mb-1">Password</label>
                 <input
-                    type="number"
-                    name="oldPrice"
-                    className="w-full p-2 rounded-md border-none focus:outline-none"
-                    placeholder="Enter current price"
-                    //value={addPrice.oldPrice}
+                    type="text"
+                    name="password"
+                    className="mb-3 w-full p-2 rounded-md bg-gray-50 border-gray-50 border border-gray-200 p-3 text-gray-900  focus:border-1 focus:border-purple-500"
+                    placeholder="Enter employee password"
+                    //value={addPrice.milestone}
                     //onChange={handleAddInputChange}
                     />
-                <label className="block text-white mb-1">Current Price</label>
+            <label className="block text-gray-500 mb-1">Email</label>
+                <input
+                    type="email"
+                    name="email"
+                    className="mb-3 w-full p-2 rounded-md bg-gray-50 border-gray-50 border border-gray-200 p-3 text-gray-900  focus:border-1 focus:border-purple-500"
+                    placeholder="Enter employee email address"
+                    //value={addPrice.milestone}
+                    //onChange={handleAddInputChange}
+                    />
+                {/* <label className="block text-gray-500 mb-1">Current Price</label>
                 <input
                     type="number"
                     name="newPrice"
@@ -252,23 +273,23 @@ const userData = [
                     placeholder="Enter new price"
                     //value={addPrice.newPrice}
                     //onChange={handleAddInputChange}
-                    />
-                    <div className="flex flex-row text-center m-6">
+                    /> */}
 
-                <div className='w-full flex justify-end'>
+
+                <div className='w-full flex justify-end gap-6 mt-8'>
                 <button type="button" className="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2"
                 //onClick={addPrices}
                 >
                     Add User
                 </button>
 
-                <button type="button" className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                <button type="button" className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-600 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
                 //   onClick={
                     //     handleClearInfo
                     // }
                 >Clear All
                 </button>
-                <button type="button" class="text-white bg-red-400 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                <button type="button" className="text-red-500 bg-white border border-red-400 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-red-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 onClick={() => {
                         setUserModalOpen(false);
                         // handleClearInfo();
@@ -276,7 +297,7 @@ const userData = [
                 >
                     Cancel
                 </button>
-                </div>
+
                 </div>
             </form>
             </div>
