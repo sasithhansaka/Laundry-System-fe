@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import Modal from 'react-modal';
 
 function Users() {
 
+    const [isUserModalOpen, setUserModalOpen] = useState(false); //state for edit price modal
 
 const userData = [
         {
@@ -124,6 +126,7 @@ const userData = [
     const filteredSalesData = branchFilter === 'All' ? userData : userData.filter(sale => sale.branch === branchFilter);
 
   return (
+    <>
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg my-14 p-4">
             <div className="pb-10">
                 <h2 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Users</h2>
@@ -137,7 +140,9 @@ const userData = [
                 </div>
 
                 <div className="flex gap-4">
-                    <button className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5" type="button">New User</button>
+                    <button className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5" type="button"
+                    onClick={()=>setUserModalOpen(true)}
+                    >New User</button>
                     <select value={branchFilter} onChange={handleBranchFilterChange} className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5">
                         <option value="All">All Branches</option>
                         <option value="Colombo">Colombo</option>
@@ -211,6 +216,72 @@ const userData = [
                 </ul>
             </nav>
         </div>
+
+        <Modal
+            isOpen={isUserModalOpen}
+            onRequestClose={() => setUserModalOpen(false)}
+            contentLabel="User Configuration"
+            className="flex rounded w-full mx-auto mt-20 flex-col justify-center items-center"
+        >
+            <div className="bg-white border-2 border-purple-500  p-8 w-1/3 rounded-xl">
+                <h2 className="text-xl center font-semibold m-6 text-purple-600">User Configuration</h2>
+            <form action="">
+            <label className="block text-white mb-1">Price Opportunity</label>
+                <input
+                    type="text"
+                    name="milestone"
+                    className="w-full p-2 rounded-md border-none focus:outline-none"
+                    placeholder="Enter price opportunity"
+                    //value={addPrice.milestone}
+                    //onChange={handleAddInputChange}
+                    />
+                <label className="block text-white mb-1">Previous Price</label>
+                <input
+                    type="number"
+                    name="oldPrice"
+                    className="w-full p-2 rounded-md border-none focus:outline-none"
+                    placeholder="Enter current price"
+                    //value={addPrice.oldPrice}
+                    //onChange={handleAddInputChange}
+                    />
+                <label className="block text-white mb-1">Current Price</label>
+                <input
+                    type="number"
+                    name="newPrice"
+                    className="w-full p-2 rounded-md border-none focus:outline-none"
+                    placeholder="Enter new price"
+                    //value={addPrice.newPrice}
+                    //onChange={handleAddInputChange}
+                    />
+                    <div className="flex flex-row text-center m-6">
+
+                <div className='w-full flex justify-end'>
+                <button type="button" className="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2"
+                //onClick={addPrices}
+                >
+                    Add User
+                </button>
+
+                <button type="button" className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                //   onClick={
+                    //     handleClearInfo
+                    // }
+                >Clear All
+                </button>
+                <button type="button" class="text-white bg-red-400 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                onClick={() => {
+                        setUserModalOpen(false);
+                        // handleClearInfo();
+                    }}
+                >
+                    Cancel
+                </button>
+                </div>
+                </div>
+            </form>
+            </div>
+        </Modal>
+        </>
   )
 }
 
