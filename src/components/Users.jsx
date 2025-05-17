@@ -137,7 +137,7 @@ const userData = [
                 </div>
 
                 <div className="flex gap-4">
-                    <button className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5" type="button">New Sale</button>
+                    <button className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5" type="button">New User</button>
                     <select value={branchFilter} onChange={handleBranchFilterChange} className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5">
                         <option value="All">All Branches</option>
                         <option value="Colombo">Colombo</option>
@@ -161,7 +161,7 @@ const userData = [
                         <th scope="col" className="px-6 py-3">Role</th>
                         <th scope="col" className="px-6 py-3">Contact</th>
                         <th scope="col" className="px-6 py-3">Branch</th>
-                        <th scope="col" className="px-6 py-3">Employee</th>
+                        <th scope="col" className="px-6 py-3">Email</th>
                         <th scope="col" className="px-6 py-3">Action</th>
                     </tr>
                 </thead>
