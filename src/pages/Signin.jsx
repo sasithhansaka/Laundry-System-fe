@@ -3,73 +3,83 @@ import "./SignIn.css";
 import SignInImg from '../images/signin.png';
 import { useNavigate } from 'react-router-dom';
 
-
 const SignIn = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="container flex-wrap mx-auto flex justify-center login min-h-full px-6 py-12 lg:px-8" id="login">
-      <div className="sm:max-w-sm flex flex-col items-end justify-center mr-20">
-        <img className="h-20 w-20" src={SignInImg} alt="Login" />
-        <h2 className="mt-1 text-left text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in</h2>
-      </div>
+    <div className="container mx-auto flex justify-center items-center min-h-screen px-6 py-12" id="login">
+      <div className="max-w-4xl bg-white rounded-3xl flex overflow-hidden animate-fadeIn border border-3 border-purple-600">
 
-      <div className="flex justify-start p-3">
-        <form className="forms space-y-3" action="#" method="POST" name="loginForm">
-          <div className="email">
-            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-              Email address
-            </label>
-            <div className="mt-2">
+        {/* Left side with image and title */}
+        <div className="hidden md:flex flex-col justify-center items-center bg-gradient-to-tr from-purple-800 to-purple-600 text-white w-1/2 p-12 rounded-l-3xl">
+          <img src={SignInImg} alt="Sign In" className="h-32 w-32 mb-6 animate-pulse-slow" />
+          <h2 className="text-4xl font-extrabold tracking-wide drop-shadow-lg">Welcome Back!</h2>
+          <p className="mt-2 text-purple-200 max-w-xs text-center">
+            Sign in to access your account and continue your journey with us.
+          </p>
+        </div>
+
+        {/* Right side: form */}
+        <div className="w-full md:w-1/2 p-12 ">
+          <h3 className="text-3xl font-bold text-gray-900 mb-8">Sign in</h3>
+
+          <form className="space-y-6" action="#" method="POST" name="loginForm">
+
+            {/* Email */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                Email address
+              </label>
               <input
                 id="email"
                 name="email"
                 type="email"
                 autoComplete="email"
                 required
-                className="block w-full rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6 bg-gray-100 px-5"
                 placeholder="example@gmail.com"
+                className="input-field"
               />
             </div>
-          </div>
 
-          <div className="password">
-            <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-              Password
-            </label>
-            <div className="mt-2">
+            {/* Password */}
+            <div>
+              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+                Password
+              </label>
               <input
                 id="password"
                 name="password"
                 type="password"
                 autoComplete="current-password"
                 required
-                className="block w-full rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6 bg-gray-100 px-5"
-                placeholder="*****"
+                placeholder="••••••••"
+                className="input-field"
               />
             </div>
-          </div>
 
-          <div className="w-full flex justify-center max-w-sm space-y-3 flex items-center">
-            <button
-              type="button"
-              onClick={() => navigate('/signup')}
-              className="flex w-full justify-center rounded-lg bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm"
-            >
-              Not registered? Create an Account
-            </button>
-          </div>
+            {/* Buttons */}
+            <div className="flex flex-col gap-4 mt-8">
+              <button
+                type="submit"
+                className="btn-primary"
+                onClick={() => navigate('/dashboard/home')}
 
-          <div className="max-w-sm mt-3 space-y-3 flex items-center">
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-lg bg-purple-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-700" >
-              Login
-            </button>
-          </div>
-        </form>
+              >
+                Login
+              </button>
+
+              <button
+                type="button"
+                onClick={() => navigate('/signup')}
+                className="btn-secondary"
+              >
+                Not registered? Create an Account
+              </button>
+            </div>
+          </form>
+        </div>
+
       </div>
-
     </div>
   );
 };
