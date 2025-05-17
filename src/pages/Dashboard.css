@@ -15,12 +15,12 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    margin-top: 30px;
     position: relative;
 }
 
-.searchbar{
-    width: 70%;
+.searchbar {
 
 
     border: 2px solid #7720b0;
@@ -32,7 +32,7 @@
 .dashboard-header input {
     width: 70%;
     background-color: transparent;
-    padding-left:20px;
+    padding-left: 20px;
     font-family: "Poppins";
     border-style: hidden;
 }
@@ -50,10 +50,13 @@
     border-radius: 50%;
     justify-content: right;
 }
+
 .dashboard-divider {
     border: none;
-    height: 2px; /* Adjust the thickness if necessary */
-    background-color: #8B38B5; /* Set the line color to purple */
-    width: 100%; /* Ensure the line spans the width of the container */
+    height: 2px;
+    /* Adjust the thickness if necessary */
+    background-color: #8B38B5;
+    /* Set the line color to purple */
+    width: 100%;
+    /* Ensure the line spans the width of the container */
 }
-
