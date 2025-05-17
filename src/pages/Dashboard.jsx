@@ -9,6 +9,7 @@ import Packages from "../components/Packages.jsx";
 import Reports  from "../components/Reports.jsx";
 import Sales from "../components/Sales.jsx";
 import Settings from "../components/Settings.jsx";
+import Users from '../components/Users.jsx';
 
 const Dashboard = () => {
     const [selectedComponent, setSelectedComponent] = useState('DashboardContent');
@@ -29,6 +30,8 @@ const Dashboard = () => {
                 return <Sales />;
             case 'Settings':
                 return <Settings />;
+            case 'Users':
+                return <Users />;
             default:
                 return <DashboardContent />;
         }

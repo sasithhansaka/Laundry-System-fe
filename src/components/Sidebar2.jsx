@@ -213,6 +213,29 @@ export const Sidebar2 = ({ setSelectedComponent }) => {
                                 }
                             </a>
                         </li>
+                        <li onClick={() => handleTabChange("Users", 8)}>
+                            <a href="#"
+                               className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7 19H13M7 19V14M7 19H1.6C1.44087 19 1.28826 18.9368 1.17574 18.8243C1.06321 18.7117 1 18.5591 1 18.4V14.6C1 14.4409 1.06321 14.2883 1.17574 14.1757C1.28826 14.0632 1.44087 14 1.6 14H7M13 19V7M13 19H18.4C18.5591 19 18.7117 18.9368 18.8243 18.8243C18.9368 18.7117 19 18.5591 19 18.4V1.6C19 1.44087 18.9368 1.28826 18.8243 1.17574C18.7117 1.06321 18.5591 1 18.4 1H13.6C13.4409 1 13.2883 1.06321 13.1757 1.17574C13.0632 1.28826 13 1.44087 13 1.6V7M7 14V7.6C7 7.44087 7.06321 7.28826 7.17574 7.17574C7.28826 7.06321 7.44087 7 7.6 7H13"
+                                        stroke="white" stroke-width="1.5"/>
+                                </svg>
+                                <span className="flex-1 ms-3 whitespace-nowrap">Reports</span>
+                                {selectedTab === 8 &&
+                                    <span
+                                        className="inline-flex items-center justify-center  rounded-full dark:bg-transparent ">
+                                        <svg className="allign left" width="10" height="16" viewBox="0 0 10 16"
+                                             fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                  d="M9.05989 6.93997C9.34079 7.22122 9.49857 7.60247 9.49857 7.99997C9.49857 8.39747 9.34079 8.77872 9.05989 9.05997L3.40389 14.718C3.12249 14.9992 2.74089 15.1572 2.34304 15.1571C1.94518 15.157 1.56365 14.9989 1.28239 14.7175C1.00113 14.4361 0.843168 14.0545 0.843262 13.6566C0.843356 13.2588 1.00149 12.8772 1.28289 12.596L5.87889 7.99997L1.28289 3.40397C1.00952 3.1212 0.858143 2.74237 0.861374 2.34907C0.864605 1.95577 1.02218 1.57947 1.30016 1.30123C1.57815 1.02298 1.95429 0.865054 2.34759 0.861452C2.74088 0.85785 3.11986 1.00887 3.40289 1.28197L9.06089 6.93897L9.05989 6.93997Z"
+                                                  fill="white"/>
+                                        </svg>
+                                    </span>
+                                }
+                            </a>
+                        </li>
                     </ul>
                     <div id="dropdown-cta" className="p-4 mt-6 rounded-lg bg-blue-50 dark:bg-white/15" role="alert">
                         <div className="flex items-center mb-3">
