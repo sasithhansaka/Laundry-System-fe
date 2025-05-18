@@ -1,129 +1,156 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-
+import { fetchUsers } from '../apiService/userService';
 function Users() {
+
+    const [users, setUsers] = useState([]);
+
+    
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
     const [isUserModalOpen, setUserModalOpen] = useState(false); //state for edit price modal
 
-const userData = [
-        {
-            id: 1,
-            salesCount: 24,
-            date: '2024-08-16',
-            totalIncome: '2999.00',
-            totalWeight: '100kg',
-            branch: 'Colombo',
-            employee: 'Nimal'
-        },
-        {
-            id: 2,
-            salesCount: 18,
-            date: '2024-08-16',
-            totalIncome: '1999.00',
-            totalWeight: '75kg',
-            branch: 'Kandy',
-            employee: 'Kamal Gunarathne'
-        },
-        {
-            id: 3,
-            salesCount: 30,
-            date: '2024-08-16',
-            totalIncome: '3499.00',
-            totalWeight: '120kg',
-            branch: 'Galle',
-            employee: 'Sunil Perera'
-        },
-        {
-            id: 4,
-            salesCount: 12,
-            date: '2024-08-16',
-            totalIncome: '1599.00',
-            totalWeight: '50kg',
-            branch: 'Kandy',
-            employee: 'Sanduni Silva'
-        },
-        {
-            id: 5,
-            salesCount: 22,
-            date: '2024-08-16',
-            totalIncome: '2799.00',
-            totalWeight: '90kg',
-            branch: 'Galle',
-            employee: 'Ruwan Wickramasinghe'
-        },
-        {
-            id: 6,
-            salesCount: 28,
-            date: '2024-08-16',
-            totalIncome: '3199.00',
-            totalWeight: '110kg',
-            branch: 'Colombo',
-            employee: 'Amal Jayawardena'
-        },
-        {
-            id: 7,
-            salesCount: 16,
-            date: '2024-08-16',
-            totalIncome: '1899.00',
-            totalWeight: '65kg',
-            branch: 'Colombo',
-            employee: 'Tharindu Bandara'
-        },
-        {
-            id: 8,
-            salesCount: 20,
-            date: '2024-08-16',
-            totalIncome: '2499.00',
-            totalWeight: '80kg',
-            branch: 'Kandy',
-            employee: 'Roshan Fernando'
-        },
-        {
-            id: 9,
-            salesCount: 14,
-            date: '2024-08-16',
-            totalIncome: '1699.00',
-            totalWeight: '55kg',
-            branch: 'Galle',
-            employee: 'Nirosha Wijesinghe'
-        },
-        {
-            id: 10,
-            salesCount: 25,
-            date: '2024-08-16',
-            totalIncome: '2899.00',
-            totalWeight: '95kg',
-            branch: 'Colombo',
-            employee: 'Chathura Maduranga'
-        },
-        {
-            id: 11,
-            salesCount: 27,
-            date: '2024-08-16',
-            totalIncome: '3099.00',
-            totalWeight: '105kg',
-            branch: 'Galle',
-            employee: 'Mahesh Kumara'
-        },
-        {
-            id: 12,
-            salesCount: 13,
-            date: '2024-08-16',
-            totalIncome: '1499.00',
-            totalWeight: '45kg',
-            branch: 'Kandy',
-            employee: 'Shanika Perera'
+    useEffect(() => {
+        const getUsers = async () => {
+            try {
+            const data = await fetchUsers();
+            if(data !== null){
+                console.log("isnull")
+            }
+            console.log(data+"jfkdlsf")
+            setUsers(data);
+        } catch (err) {
+            setError('Failed to fetch users. Please try again later.');
+        } finally {
+            setLoading(false);
         }
+        };
+        getUsers();
+    }, []);
+
+    
+
+
+// const userData = [
+//         {
+//             id: 1,
+//             salesCount: 24,
+//             date: '2024-08-16',
+//             totalIncome: '2999.00',
+//             totalWeight: '100kg',
+//             branch: 'Colombo',
+//             employee: 'Nimal'
+//         },
+//         {
+//             id: 2,
+//             salesCount: 18,
+//             date: '2024-08-16',
+//             totalIncome: '1999.00',
+//             totalWeight: '75kg',
+//             branch: 'Kandy',
+//             employee: 'Kamal Gunarathne'
+//         },
+//         {
+//             id: 3,
+//             salesCount: 30,
+//             date: '2024-08-16',
+//             totalIncome: '3499.00',
+//             totalWeight: '120kg',
+//             branch: 'Galle',
+//             employee: 'Sunil Perera'
+//         },
+//         {
+//             id: 4,
+//             salesCount: 12,
+//             date: '2024-08-16',
+//             totalIncome: '1599.00',
+//             totalWeight: '50kg',
+//             branch: 'Kandy',
+//             employee: 'Sanduni Silva'
+//         },
+//         {
+//             id: 5,
+//             salesCount: 22,
+//             date: '2024-08-16',
+//             totalIncome: '2799.00',
+//             totalWeight: '90kg',
+//             branch: 'Galle',
+//             employee: 'Ruwan Wickramasinghe'
+//         },
+//         {
+//             id: 6,
+//             salesCount: 28,
+//             date: '2024-08-16',
+//             totalIncome: '3199.00',
+//             totalWeight: '110kg',
+//             branch: 'Colombo',
+//             employee: 'Amal Jayawardena'
+//         },
+//         {
+//             id: 7,
+//             salesCount: 16,
+//             date: '2024-08-16',
+//             totalIncome: '1899.00',
+//             totalWeight: '65kg',
+//             branch: 'Colombo',
+//             employee: 'Tharindu Bandara'
+//         },
+//         {
+//             id: 8,
+//             salesCount: 20,
+//             date: '2024-08-16',
+//             totalIncome: '2499.00',
+//             totalWeight: '80kg',
+//             branch: 'Kandy',
+//             employee: 'Roshan Fernando'
+//         },
+//         {
+//             id: 9,
+//             salesCount: 14,
+//             date: '2024-08-16',
+//             totalIncome: '1699.00',
+//             totalWeight: '55kg',
+//             branch: 'Galle',
+//             employee: 'Nirosha Wijesinghe'
+//         },
+//         {
+//             id: 10,
+//             salesCount: 25,
+//             date: '2024-08-16',
+//             totalIncome: '2899.00',
+//             totalWeight: '95kg',
+//             branch: 'Colombo',
+//             employee: 'Chathura Maduranga'
+//         },
+//         {
+//             id: 11,
+//             salesCount: 27,
+//             date: '2024-08-16',
+//             totalIncome: '3099.00',
+//             totalWeight: '105kg',
+//             branch: 'Galle',
+//             employee: 'Mahesh Kumara'
+//         },
+//         {
+//             id: 12,
+//             salesCount: 13,
+//             date: '2024-08-16',
+//             totalIncome: '1499.00',
+//             totalWeight: '45kg',
+//             branch: 'Kandy',
+//             employee: 'Shanika Perera'
+//         }
         
-    ];
+//     ];
 
-    const [branchFilter, setBranchFilter] = useState('All');
+    const [roleFilter, setRoleFilter] = useState('All');
 
-    const handleBranchFilterChange = (e) => {
-        setBranchFilter(e.target.value);
+    const handleRoleFilterChange = (e) => {
+        setRoleFilter(e.target.value);
     };
 
-    const filteredSalesData = branchFilter === 'All' ? userData : userData.filter(sale => sale.branch === branchFilter);
+    const filteredSalesData = roleFilter === 'All' ? users : users.filter(user => user.role === roleFilter);
 
   return (
     <>
@@ -143,11 +170,11 @@ const userData = [
                     <button className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5" type="button"
                     onClick={()=>setUserModalOpen(true)}
                     >New User</button>
-                    <select value={branchFilter} onChange={handleBranchFilterChange} className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5">
+                    <select value={roleFilter} onChange={handleRoleFilterChange} className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5">
                         <option value="All">All Branches</option>
-                        <option value="Colombo">Colombo</option>
-                        <option value="Kandy">Kandy</option>
-                        <option value="Galle">Galle</option>
+                        <option value="cashier">Cashier</option>
+                        <option value="manager">Manager</option>
+                        <option value="assistant">Assistant</option>
                     </select>
                 </div>
             </div>
@@ -164,27 +191,25 @@ const userData = [
                         <th scope="col" className="px-6 py-3">#No</th>
                         <th scope="col" className="px-6 py-3">Name</th>
                         <th scope="col" className="px-6 py-3">Role</th>
-                        <th scope="col" className="px-6 py-3">Contact</th>
-                        <th scope="col" className="px-6 py-3">Branch</th>
+                        <th scope="col" className="px-6 py-3">Status</th>
                         <th scope="col" className="px-6 py-3">Email</th>
                         <th scope="col" className="px-6 py-3">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredSalesData.map(sale => (
-                        <tr key={sale.id} className="bg-white border-b hover:bg-gray-50">
+                    {users.map(user => (
+                        <tr key={user.id} className="bg-white border-b hover:bg-gray-50">
                             <td className="w-4 p-4">
                                 <div className="flex items-center">
-                                    <input id={`checkbox-table-search-${sale.id}`} type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"/>
-                                    <label htmlFor={`checkbox-table-search-${sale.id}`} className="sr-only">checkbox</label>
+                                    <input id={`checkbox-table-search-${user.id}`} type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"/>
+                                    <label htmlFor={`checkbox-table-search-${user.id}`} className="sr-only">checkbox</label>
                                 </div>
                             </td>
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{sale.salesCount}</th>
-                            <td className="px-6 py-4">{sale.date}</td>
-                            <td className="px-6 py-4">{sale.totalIncome}</td>
-                            <td className="px-6 py-4">{sale.totalWeight}</td>
-                            <td className="px-6 py-4">{sale.branch}</td>
-                            <td className="px-6 py-4">{sale.employee}</td>
+                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{user.id}</th>
+                            <td className="px-6 py-4">{user.fullName}</td>
+                            <td className="px-6 py-4">{user.role}</td>
+                            <td className="px-6 py-4">{user.active ? "Active" : "Unavailable"}</td>
+                            <td className="px-6 py-4">{user.email}</td>
                             <td className="px-6 py-4">
                                 <a href="#" className="font-medium text-blue-600 mx-3 hover:underline">Delete</a>
                             </td>
