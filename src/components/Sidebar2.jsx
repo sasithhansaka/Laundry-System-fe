@@ -1,9 +1,10 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Sidebar.css';
 import { ChevronRight } from 'lucide-react';
 
 const Sidebar2 = () => {
     const location = useLocation();
+    const navigate = useNavigate();
 
     const navLinks = [
         { to: '/dashboard/home', label: 'Dashboard' },
