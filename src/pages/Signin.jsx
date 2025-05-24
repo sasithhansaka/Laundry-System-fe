@@ -1,10 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SignIn.css";
 import SignInImg from '../images/signin.png';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setErrorMsg('');
+
+    try {
+      const response = await axios.post(
+        `https://lms-system-9a515d1462cd.herokuapp.com/api/users/login`,
+        null, // No request body, since data goes in query string
+        {
+          params: {
+            email: email,
+            password: password
+          }
+        }
+      );
+
+      if (response.status === 200) {
+        // Success - navigate to dashboard
+        navigate('/dashboard/home');
+      }
+    } catch (error) {
+      if (error.response?.status === 400) {
+        setErrorMsg('Invalid email or password.');
+      } else {
+        setErrorMsg('An error occurred. Please try again later.');
+      }
+    }
+  };
 
   return (
     <div className="container mx-auto flex justify-center items-center min-h-screen px-6 py-12" id="login">
@@ -23,7 +56,7 @@ const SignIn = () => {
         <div className="w-full md:w-1/2 p-12 ">
           <h3 className="text-3xl font-bold text-gray-900 mb-8">Sign in</h3>
 
-          <form className="space-y-6" action="#" method="POST" name="loginForm">
+          <form className="space-y-6" onSubmit={handleLogin}>
 
             {/* Email */}
             <div>
@@ -32,9 +65,9 @@ const SignIn = () => {
               </label>
               <input
                 id="email"
-                name="email"
                 type="email"
-                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="example@gmail.com"
                 className="input-field"
@@ -48,23 +81,25 @@ const SignIn = () => {
               </label>
               <input
                 id="password"
-                name="password"
                 type="password"
-                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
                 placeholder="••••••••"
                 className="input-field"
               />
             </div>
 
+            {/* Error Message */}
+            {errorMsg && (
+              <div className="text-red-600 text-sm font-semibold">
+                {errorMsg}
+              </div>
+            )}
+
             {/* Buttons */}
             <div className="flex flex-col gap-4 mt-8">
-              <button
-                type="submit"
-                className="btn-primary"
-                onClick={() => navigate('/dashboard/home')}
-
-              >
+              <button type="submit" className="btn-primary">
                 Login
               </button>
 
