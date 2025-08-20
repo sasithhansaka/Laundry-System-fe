@@ -1,127 +1,38 @@
-import { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
 const Sales = () => {
-  const salesData = [
-    {
-      id: 1,
-      salesCount: 24,
-      date: "2024-08-16",
-      totalIncome: "2999.00",
-      totalWeight: "100kg",
-      branch: "Colombo",
-      employee: "Nimal",
-    },
-    {
-      id: 2,
-      salesCount: 18,
-      date: "2024-08-16",
-      totalIncome: "1999.00",
-      totalWeight: "75kg",
-      branch: "Kandy",
-      employee: "Kamal Gunarathne",
-    },
-    {
-      id: 3,
-      salesCount: 30,
-      date: "2024-08-16",
-      totalIncome: "3499.00",
-      totalWeight: "120kg",
-      branch: "Galle",
-      employee: "Sunil Perera",
-    },
-    {
-      id: 4,
-      salesCount: 12,
-      date: "2024-08-16",
-      totalIncome: "1599.00",
-      totalWeight: "50kg",
-      branch: "Kandy",
-      employee: "Sanduni Silva",
-    },
-    {
-      id: 5,
-      salesCount: 22,
-      date: "2024-08-16",
-      totalIncome: "2799.00",
-      totalWeight: "90kg",
-      branch: "Galle",
-      employee: "Ruwan Wickramasinghe",
-    },
-    {
-      id: 6,
-      salesCount: 28,
-      date: "2024-08-16",
-      totalIncome: "3199.00",
-      totalWeight: "110kg",
-      branch: "Colombo",
-      employee: "Amal Jayawardena",
-    },
-    {
-      id: 7,
-      salesCount: 16,
-      date: "2024-08-16",
-      totalIncome: "1899.00",
-      totalWeight: "65kg",
-      branch: "Colombo",
-      employee: "Tharindu Bandara",
-    },
-    {
-      id: 8,
-      salesCount: 20,
-      date: "2024-08-16",
-      totalIncome: "2499.00",
-      totalWeight: "80kg",
-      branch: "Kandy",
-      employee: "Roshan Fernando",
-    },
-    {
-      id: 9,
-      salesCount: 14,
-      date: "2024-08-16",
-      totalIncome: "1699.00",
-      totalWeight: "55kg",
-      branch: "Galle",
-      employee: "Nirosha Wijesinghe",
-    },
-    {
-      id: 10,
-      salesCount: 25,
-      date: "2024-08-16",
-      totalIncome: "2899.00",
-      totalWeight: "95kg",
-      branch: "Colombo",
-      employee: "Chathura Maduranga",
-    },
-    {
-      id: 11,
-      salesCount: 27,
-      date: "2024-08-16",
-      totalIncome: "3099.00",
-      totalWeight: "105kg",
-      branch: "Galle",
-      employee: "Mahesh Kumara",
-    },
-    {
-      id: 12,
-      salesCount: 13,
-      date: "2024-08-16",
-      totalIncome: "1499.00",
-      totalWeight: "45kg",
-      branch: "Kandy",
-      employee: "Shanika Perera",
-    },
-  ];
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [filteredData, setFilteredData] = useState(null); // New state to hold the filtered data
 
-  const [branchFilter, setBranchFilter] = useState("All");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://lms-backend-project-ft6t.onrender.com/api/orders/"
+        );
 
-  const handleBranchFilterChange = (e) => {
-    setBranchFilter(e.target.value);
-  };
+        console.log("API Response:", response.data);
 
-  const filteredSalesData =
-    branchFilter === "All"
-      ? salesData
-      : salesData.filter((sale) => sale.branch === branchFilter);
+        setData(response.data.data); // Accessing the 'data' array from the API response
+
+        // Filter for orders with status 'Pending'
+        const completeData = response.data.data.filter(
+          (item) => item.orderStatus === "Pending"
+        );
+
+        setFilteredData(completeData);
+
+      } catch (error) {
+        console.error("Error fetching packages:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg my-14 p-4">
@@ -148,11 +59,6 @@ const Sales = () => {
           <tr>
             <th scope="col" className="p-4">
               <div className="flex items-center">
-                {/* <input
-                  id="checkbox-all-search"
-                  type="checkbox"
-                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-                /> */}
                 <label htmlFor="checkbox-all-search" className="sr-only">
                   checkbox
                 </label>
@@ -171,18 +77,18 @@ const Sales = () => {
               Employee
             </th>
             <th scope="col" className="px-6 py-3">
-              Orderd Date
+              Order Date
             </th>
             <th scope="col" className="px-6 py-3">
               Complete Date
             </th>
-            <th scope="col" className="px-6 py-3">
+            {/* <th scope="col" className="px-6 py-3">
               Action
-            </th>
+            </th> */}
           </tr>
         </thead>
         <tbody>
-          {filteredSalesData.map((sale) => (
+          {filteredData?.map((sale) => (
             <tr key={sale.id} className="bg-white border-b hover:bg-gray-50">
               <td className="w-4 p-4">
                 <div className="flex items-center">
@@ -199,24 +105,19 @@ const Sales = () => {
                   </label>
                 </div>
               </td>
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
-                {sale.salesCount}
-              </th>
-              <td className="px-6 py-4">{sale.date}</td>
-              <td className="px-6 py-4">{sale.totalIncome}</td>
-              <td className="px-6 py-4">{sale.totalWeight}</td>
-              <td className="px-6 py-4">{sale.branch}</td>
-              <td className="px-6 py-4">{sale.employee}</td>
+              <td className="px-6 py-4">{sale.customerName}</td>
+              <td className="px-6 py-4">{sale.orderTotal}</td>
+              <td className="px-6 py-4">{sale.weight}</td>
+              <td className="px-6 py-4">{sale.customerNumber}</td>
+              <td className="px-6 py-4">{new Date(sale.orderDate).toLocaleDateString()}</td>
+              <td className="px-6 py-4">{new Date(sale.handOverDate).toLocaleDateString()}</td>
               <td className="px-6 py-4">
-                <a
+                {/* <a
                   href="#"
                   className="font-medium text-blue-600 mx-3 hover:underline"
                 >
                   Delete
-                </a>
+                </a> */}
               </td>
             </tr>
           ))}
@@ -227,7 +128,7 @@ const Sales = () => {
         className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4 my-5"
         aria-label="Table navigation"
       >
-        <h3 className="font-sans">{`${filteredSalesData.length} Records`}</h3>
+        <h3 className="font-sans">{`${filteredData?.length} Records`}</h3>
       </nav>
     </div>
   );
